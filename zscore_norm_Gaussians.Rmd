@@ -1,0 +1,49 @@
+---
+title: "Effects of ZScore Scaling"
+author: "Chris Adriano"
+date: "7/25/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+```
+
+##  zscore_scaling_normal_distributions
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{generate data}
+
+x <- rnorm(n=1000, mean = 0,sd=5)
+y <- rnorm(n=1000, mean = 0,sd=15)
+x_z_scaled <- scale(x,center = TRUE, scale=TRUE)
+y_z_scaled <- scale(y,center = TRUE, scale=TRUE)
+
+
+```
+
+##Confirming that new standard deviations are unitary
+```{Statistics}
+sd(x_z)
+sd(y_z)
+``` 
+
+
+## Plots for visual comparison
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+hist(x)
+title(main="n=100, mean = 0,sd=10")
+hist(y)
+hist(x_z_scaled)
+hist(y_z_scaled)
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
